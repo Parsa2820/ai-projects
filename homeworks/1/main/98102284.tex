@@ -1,0 +1,91 @@
+\documentclass{university}
+
+\begin{document}
+\setupdocument
+
+\section{}
+
+\subsection{}
+\subsubsection{}
+\begin{enumerate}
+    \item \lr{Performance measure} :
+    \begin{enumerate}
+        \item رعایت قوانین رانندگی
+        \item واکنش مناسب هنگام خطر
+        \item انتخاب بهترین و سریع‌ترین مسیر
+        \item ایمنی در رانندگی
+    \end{enumerate}
+    \item \lr{Environment} :
+    تمامی خیابان‌ها و 
+    جاده‌هایی که تاکسی باید در آن تردد کند. عوامل و موانع طبیعی موجود در جاده و راه‌ها. تابلوهای راهنمایی و رانندگی.
+    \item \lr{Actuator} :
+    عملکردهای خودرو مانند گاز، ترمز، حرکت 
+    فرمان، راهنما، چراغ و \dots.
+    \item \lr{Sensor} : 
+    دوربین‌ها و سنسورهایی که بر بدنه خودرو نصب 
+    شده‌اند. همچنین خودرو باید از مسافر نیز فرمان 
+    بگیرد. سنسور 
+    \lr{GPS} و 
+    سنسورهای درونی خودرو نظیر دماسنج.
+
+\end{enumerate}
+\subsubsection{}
+\begin{enumerate}
+    \item \lr{Performance measure} : بردن بازی، زمان انجام هر حرکت، تابع قوانین بازی بودن
+    \item \lr{Environment} : صفحه بازی و مهره‌ها 
+    \item \lr{Actuator} : احتمالا یک بازو مکانیکی برای کاشتن مهره در صفحه بازی
+    \item \lr{Sensor} : یک یا چند دوربین برای تشخیص جایگاه مهره‌ها موجود در صفحه بازی (اگر جای مهره‌ها را با پردازش تصویر تشخیص دهد. در غیر این صورت سنسورهای مناسب سیستم طراحی شده)
+\end{enumerate}
+
+\subsection{}
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{|c|c|}
+    \hline
+    \textbf{\lr{Tic-tac-toe robot}} & \textbf{\lr{Chess with time control}} \\
+    \hline
+    \lr{Fully observable} & \lr{Fully observable} \\
+    \lr{Strategic} & \lr{Strategic} \\
+    \lr{Sequential} & \lr{Sequential} \\
+    \lr{Static} & \lr{Semidynamic {\footnotesize time control}} \\
+    \lr{Multi agent} & \lr{Multi agent} \\
+    \lr{Continuous {\footnotesize pieces placement}} & \lr{Discrete} \\
+    \hline
+\end{tabular}
+\end{table}
+
+\section{}
+
+\subsection{حالت‌ها}
+حالت‌ها جایگاه اعداد در مربع هستند. برای نمونه اگر مربع داده شده را به صورت 
+یک آرایه دو بعدی در نظر بگیریم که 3 سطر و 3 ستون دارد، هر جایگشت اعداد 1 تا 9 در خانه‌های 
+این آرایه، به صورتی که هر عدد تنها 1 بار ظاهر شود یک حالت برای این مسئله است.
+
+\subsection{عملیات‌ها}
+عملیات موجود در این مدلسازی، جابجایی دو خانه است. حال این جابجایی طبق محدودیت مسئله 
+بین خانه‌ای که مقدار آن 9 است و یکی از خانه‌های مجاور(دارای ضلع مشترک) آن انجام می‌شود. 
+برای سادگی می‌توان 4 عملیات زیر را در نظر گرفت.
+\begin{enumerate}
+    \item \lr{U} : مقدار خانه دارای مقدار 9 با مقدار خانه بالایی آن جابجا شود
+    \item \lr{D} : مقدار خانه دارای مقدار 9 با مقدار خانه پائینی آن جابجا شود
+    \item \lr{R} : مقدار خانه دارای مقدار 9 با مقدار خانه راستی آن جابجا شود
+    \item \lr{L} : مقدار خانه دارای مقدار 9 با مقدار خانه چپی آن جابجا شود
+\end{enumerate}
+البته هر عملیات در صورتی معتبر است که خانه‌ای که مقدار آن 9 است در گوشه به گونه‌ای نباشد که خانه متناظر با 
+عملیات وجود نداشته باشد. برای مثال برای خانه‌ی 
+\lr{$(0, 0)$}
+در مدلسازی با آرایه دو بعدی، عملیات‌های 
+\lr{U}
+و 
+\lr{L} 
+معتبر نیستند.
+
+\subsection{شرط رسیدن به هدف}
+شرط رسیدن به هدف طبق مطلوبات مسئله، برابر شدن جمع اعداد روی هر سطر، ستون و قطر است.
+
+\section{}
+\begin{gather}
+    DFS(S,G1) : S \rightarrow A \rightarrow D \rightarrow C \rightarrow G1, cost = 12
+\end{gather}
+
+\end{document}

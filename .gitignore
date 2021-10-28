@@ -1,3 +1,11 @@
 book
 lecture note
 slides
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.toc
+*.xdv
+

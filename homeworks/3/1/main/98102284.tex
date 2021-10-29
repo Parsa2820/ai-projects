@@ -21,7 +21,7 @@
 \lr{$j$}
 حالت‌بندی کنیم، داریم:
 \begin{itemize}
-    \item کم: \lr{$(X_i,X_j) \in \{(k,z), (z,k), (z,z)\}$}
+    \item کم: \lr{$(X_i,X_j) \in \{(k,z), (z,k)\}$}
     \item زیاد: \lr{$(X_i,X_j) \in \{(k,c), (c,k), (c,c), (c,z), (z,c)\}$}
     \item بدون باد: \lr{$(X_i,X_j) \in \{(z,z)\}$}
 \end{itemize}
@@ -40,7 +40,7 @@
 \end{itemize}
 
 \subsection{}
-اگر در 6 را خروج در نظر بگیریم، طبق 
+ابتدا قیدهای یونری را اعمال می‌کنیم. اگر در 6 را خروج در نظر بگیریم، طبق 
 \lr{constraint}
 دوم باینری، در 1 باید چاه باشد. در ادامه بین در 1 و 2، 
 \lr{constraint}
@@ -52,13 +52,13 @@
 
 \begin{gather*}
     X_6 = k \\
-    \text{\lr{forward checking:}} \\
-    X_1 \in \{\} \\
-    X_2 \in \{k, z\} \\
-    X_3 \in \{k, c, z\} \\
-    X_4 \in \{k, c, z\} \\
-    X_5 \in \{c\} \\
     \text{\lr{apply unary constraints:}} \\
+    X_1 \in \{k, z\} \\
+    X_2 \in \{k, z\} \\
+    X_3 \in \{k, z\} \\
+    X_4 \in \{k, c, z\} \\
+    X_5 \in \{k, c, z\} \\
+    \text{\lr{forward checking:}} \\
     X_1 \in \{\} \\
     X_2 \in \{k, z\} \\
     X_3 \in \{k, z\} \\
@@ -148,7 +148,7 @@
 که از گراف حذف شده بود، را یکی از مقادیر دامنه 
 (\lr{$\{k, c, z\}$})
 قرار می‌دهیم. با این کار کل مسئله در زمان 
-\lr{$O(3 \times (n-1) \times d^2) = O(n \times d^2)$}
+\lr{$O(d \times (n-1) \times d^2) = O(n \times d^3)$}
 قابل حل است که شرایط خطی بودن نسبت به تعداد متغیرها را براورده می‌کند.
 
 \begin{figure}[htbp]

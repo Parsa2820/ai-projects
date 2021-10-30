@@ -1,0 +1,428 @@
+Arian YazdanParast, [29.10.21 23:58]
+Running Anytime Weighted A-star
+*************************************
+PROBLEM 0
+Solution Found with cost of 23 in search time of 0.0625 sec
+Nodes expanded = 1271, states generated = 2738, states cycle check pruned = 1467, states cost bound pruned = 0
+Search Failed! No solution found.
+Nodes expanded = 2409, states generated = 6152, states cycle check pruned = 3623, states cost bound pruned = 120
+*************************************
+PROBLEM 1
+Solution Found with cost of 37 in search time of 0.265625 sec
+Nodes expanded = 7971, states generated = 17752, states cycle check pruned = 9781, states cost bound pruned = 0
+Solution Found with cost of 37 in search time of 0.0 sec
+Nodes expanded = 8106, states generated = 18067, states cycle check pruned = 9949, states cost bound pruned = 12
+Solution Found with cost of 37 in search time of 0.015625 sec
+Nodes expanded = 8226, states generated = 18348, states cycle check pruned = 10093, states cost bound pruned = 29
+Solution Found with cost of 35 in search time of 0.0625 sec
+Nodes expanded = 9785, states generated = 22251, states cycle check pruned = 12423, states cost bound pruned = 43
+Solution Found with cost of 35 in search time of 0.0 sec
+Nodes expanded = 10007, states generated = 22825, states cycle check pruned = 12769, states cost bound pruned = 49
+Solution Found with cost of 35 in search time of 0.015625 sec
+Nodes expanded = 10046, states generated = 22935, states cycle check pruned = 12834, states cost bound pruned = 55
+Search Failed! No solution found.
+Nodes expanded = 11076, states generated = 26636, states cycle check pruned = 15017, states cost bound pruned = 543
+*************************************
+PROBLEM 2
+Solution Found with cost of 27 in search time of 0.171875 sec
+Nodes expanded = 4567, states generated = 9888, states cycle check pruned = 5321, states cost bound pruned = 0
+Solution Found with cost of 27 in search time of 0.0 sec
+Nodes expanded = 4582, states generated = 9933, states cycle check pruned = 5349, states cost bound pruned = 2
+Solution Found with cost of 27 in search time of 0.03125 sec
+Nodes expanded = 5035, states generated = 11165, states cycle check pruned = 6098, states cost bound pruned = 32
+Search Failed! No solution found.
+Nodes expanded = 11179, states generated = 29282, states cycle check pruned = 17349, states cost bound pruned = 754
+*************************************
+PROBLEM 3
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 265, states generated = 448, states cycle check pruned = 183, states cost bound pruned = 0
+Solution Found with cost of 24 in search time of 0.015625 sec
+Nodes expanded = 318, states generated = 646, states cycle check pruned = 289, states cost bound pruned = 39
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 378, states generated = 790, states cycle check pruned = 355, states cost bound pruned = 57
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 422, states generated = 911, states cycle check pruned = 414, states cost bound pruned = 75
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 480, states generated = 1067, states cycle check pruned = 490, states cost bound pruned = 97
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 538, states generated = 1228, states cycle check pruned = 568, states cost bound pruned = 122
+Solution Found with cost of 24 in search time of 0.03125 sec
+Nodes expanded = 1724, states generated = 3955, states cycle check pruned = 1996, states cost bound pruned = 235
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 1725, states generated = 3958, states cycle check pruned = 1997, states cost bound pruned = 236
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 2177, states generated = 4847, states cycle check pruned = 2393, states cost bound pruned = 277
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 2178, states generated = 4850, states cycle check pruned = 2394, states cost bound pruned = 278
+
+Arian YazdanParast, [29.10.21 23:58]
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 2235, states generated = 4977, states cycle check pruned = 2460, states cost bound pruned = 282
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 2236, states generated = 4980, states cycle check pruned = 2461, states cost bound pruned = 283
+Solution Found with cost of 24 in search time of 0.046875 sec
+Nodes expanded = 3384, states generated = 7237, states cycle check pruned = 3514, states cost bound pruned = 339
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 3385, states generated = 7240, states cycle check pruned = 3515, states cost bound pruned = 340
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 3452, states generated = 7397, states cycle check pruned = 3597, states cost bound pruned = 348
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 3453, states generated = 7400, states cycle check pruned = 3598, states cost bound pruned = 349
+Solution Found with cost of 24 in search time of 0.015625 sec
+Nodes expanded = 4373, states generated = 9226, states cycle check pruned = 4446, states cost bound pruned = 407
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 4374, states generated = 9229, states cycle check pruned = 4447, states cost bound pruned = 408
+Solution Found with cost of 24 in search time of 0.0625 sec
+Nodes expanded = 4937, states generated = 13427, states cycle check pruned = 6752, states cost bound pruned = 1738
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 4976, states generated = 13550, states cycle check pruned = 6825, states cost bound pruned = 1749
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 5031, states generated = 13669, states cycle check pruned = 6883, states cost bound pruned = 1755
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 5072, states generated = 13817, states cycle check pruned = 6973, states cost bound pruned = 1772
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 5113, states generated = 13927, states cycle check pruned = 7039, states cost bound pruned = 1775
+Solution Found with cost of 24 in search time of 0.015625 sec
+Nodes expanded = 5164, states generated = 14048, states cycle check pruned = 7099, states cost bound pruned = 1785
+Solution Found with cost of 24 in search time of 0.046875 sec
+Nodes expanded = 7043, states generated = 18115, states cycle check pruned = 9150, states cost bound pruned = 1922
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 7044, states generated = 18121, states cycle check pruned = 9153, states cost bound pruned = 1924
+Solution Found with cost of 24 in search time of 0.015625 sec
+Nodes expanded = 7113, states generated = 18248, states cycle check pruned = 9201, states cost bound pruned = 1934
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 7114, states generated = 18254, states cycle check pruned = 9204, states cost bound pruned = 1936
+Solution Found with cost of 24 in search time of 0.015625 sec
+Nodes expanded = 7623, states generated = 19244, states cycle check pruned = 9646, states cost bound pruned = 1975
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 7624, states generated = 19250, states cycle check pruned = 9649, states cost bound pruned = 1977
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 7702, states generated = 19417, states cycle check pruned = 9734, states cost bound pruned = 1981
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 7703, states generated = 19423, states cycle check pruned = 9737, states cost bound pruned = 1983
+Solution Found with cost of 24 in search time of 0.03125 sec
+Nodes expanded = 8731, states generated = 21424, states cycle check pruned = 10641, states cost bound pruned = 2052
+Solution Found with cost of 24 in search time of 0.0 sec
+
+Arian YazdanParast, [29.10.21 23:58]
+Nodes expanded = 8732, states generated = 21430, states cycle check pruned = 10644, states cost bound pruned = 2054
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 8741, states generated = 21445, states cycle check pruned = 10648, states cost bound pruned = 2056
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 8742, states generated = 21451, states cycle check pruned = 10651, states cost bound pruned = 2058
+Solution Found with cost of 24 in search time of 0.046875 sec
+Nodes expanded = 9167, states generated = 25205, states cycle check pruned = 12699, states cost bound pruned = 3339
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 9168, states generated = 25208, states cycle check pruned = 12700, states cost bound pruned = 3340
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 9186, states generated = 25245, states cycle check pruned = 12716, states cost bound pruned = 3343
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 9187, states generated = 25248, states cycle check pruned = 12717, states cost bound pruned = 3344
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 9199, states generated = 25273, states cycle check pruned = 12727, states cost bound pruned = 3347
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 9200, states generated = 25276, states cycle check pruned = 12728, states cost bound pruned = 3348
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 9210, states generated = 25297, states cycle check pruned = 12736, states cost bound pruned = 3351
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 9211, states generated = 25300, states cycle check pruned = 12737, states cost bound pruned = 3352
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 9218, states generated = 25316, states cycle check pruned = 12743, states cost bound pruned = 3355
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 9219, states generated = 25319, states cycle check pruned = 12744, states cost bound pruned = 3356
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 9233, states generated = 25348, states cycle check pruned = 12756, states cost bound pruned = 3359
+Solution Found with cost of 24 in search time of 0.0 sec
+Nodes expanded = 9234, states generated = 25351, states cycle check pruned = 12757, states cost bound pruned = 3360
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 9305, states generated = 25624, states cycle check pruned = 12897, states cost bound pruned = 3422
+Solution Found with cost of 22 in search time of 0.015625 sec
+Nodes expanded = 9548, states generated = 26383, states cycle check pruned = 13317, states cost bound pruned = 3518
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 9549, states generated = 26389, states cycle check pruned = 13319, states cost bound pruned = 3521
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 9611, states generated = 26568, states cycle check pruned = 13409, states cost bound pruned = 3548
+Solution Found with cost of 22 in search time of 0.015625 sec
+Nodes expanded = 9938, states generated = 27489, states cycle check pruned = 13932, states cost bound pruned = 3619
+Solution Found with cost of 22 in search time of 0.015625 sec
+Nodes expanded = 10301, states generated = 28415, states cycle check pruned = 14439, states cost bound pruned = 3675
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 10302, states generated = 28418, states cycle check pruned = 14440, states cost bound pruned = 3676
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 10546, states generated = 29075, states cycle check pruned = 14794, states cost bound pruned = 3735
+Solution Found with cost of 22 in search time of 0.0 sec
+
+Arian YazdanParast, [29.10.21 23:58]
+Nodes expanded = 10547, states generated = 29078, states cycle check pruned = 14795, states cost bound pruned = 3736
+Solution Found with cost of 22 in search time of 0.015625 sec
+Nodes expanded = 10625, states generated = 29284, states cycle check pruned = 14900, states cost bound pruned = 3759
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 10626, states generated = 29290, states cycle check pruned = 14903, states cost bound pruned = 3761
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 10662, states generated = 29410, states cycle check pruned = 14964, states cost bound pruned = 3784
+Solution Found with cost of 22 in search time of 0.03125 sec
+Nodes expanded = 11670, states generated = 31810, states cycle check pruned = 16284, states cost bound pruned = 3856
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 11671, states generated = 31816, states cycle check pruned = 16288, states cost bound pruned = 3857
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 11738, states generated = 31996, states cycle check pruned = 16380, states cost bound pruned = 3878
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 11739, states generated = 32002, states cycle check pruned = 16384, states cost bound pruned = 3879
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 11777, states generated = 32127, states cycle check pruned = 16447, states cost bound pruned = 3903
+Solution Found with cost of 22 in search time of 0.015625 sec
+Nodes expanded = 11935, states generated = 32565, states cycle check pruned = 16702, states cost bound pruned = 3928
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 11936, states generated = 32571, states cycle check pruned = 16706, states cost bound pruned = 3929
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 11967, states generated = 32684, states cycle check pruned = 16764, states cost bound pruned = 3953
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 12090, states generated = 33057, states cycle check pruned = 16986, states cost bound pruned = 3981
+Solution Found with cost of 22 in search time of 0.109375 sec
+Nodes expanded = 15100, states generated = 40223, states cycle check pruned = 20610, states cost bound pruned = 4513
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 15194, states generated = 40516, states cycle check pruned = 20797, states cost bound pruned = 4525
+Solution Found with cost of 22 in search time of 0.015625 sec
+Nodes expanded = 15305, states generated = 40849, states cycle check pruned = 21010, states cost bound pruned = 4534
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 15306, states generated = 40852, states cycle check pruned = 21011, states cost bound pruned = 4535
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 15352, states generated = 40988, states cycle check pruned = 21087, states cost bound pruned = 4549
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 15474, states generated = 41344, states cycle check pruned = 21309, states cost bound pruned = 4561
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 15475, states generated = 41347, states cycle check pruned = 21310, states cost bound pruned = 4562
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 15539, states generated = 41516, states cycle check pruned = 21404, states cost bound pruned = 4573
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 15540, states generated = 41519, states cycle check pruned = 21405, states cost bound pruned = 4574
+Solution Found with cost of 22 in search time of 0.15625 sec
+Nodes expanded = 19654, states generated = 51472, states cycle check pruned = 26950, states cost bound pruned = 4868
+Solution Found with cost of 22 in search time of 0.0 sec
+
+Arian YazdanParast, [29.10.21 23:58]
+Nodes expanded = 19655, states generated = 51478, states cycle check pruned = 26954, states cost bound pruned = 4869
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 19685, states generated = 51535, states cycle check pruned = 26979, states cost bound pruned = 4871
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 19686, states generated = 51541, states cycle check pruned = 26983, states cost bound pruned = 4872
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 19951, states generated = 52041, states cycle check pruned = 27199, states cost bound pruned = 4891
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 19952, states generated = 52047, states cycle check pruned = 27203, states cost bound pruned = 4892
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 19962, states generated = 52072, states cycle check pruned = 27216, states cost bound pruned = 4894
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 19963, states generated = 52078, states cycle check pruned = 27220, states cost bound pruned = 4895
+Solution Found with cost of 22 in search time of 0.046875 sec
+Nodes expanded = 21141, states generated = 55195, states cycle check pruned = 28711, states cost bound pruned = 5343
+Solution Found with cost of 22 in search time of 0.03125 sec
+Nodes expanded = 21937, states generated = 57024, states cycle check pruned = 29645, states cost bound pruned = 5442
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 21938, states generated = 57027, states cycle check pruned = 29646, states cost bound pruned = 5443
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 21945, states generated = 57043, states cycle check pruned = 29653, states cost bound pruned = 5445
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 21946, states generated = 57046, states cycle check pruned = 29654, states cost bound pruned = 5446
+Solution Found with cost of 22 in search time of 0.015625 sec
+Nodes expanded = 22185, states generated = 57496, states cycle check pruned = 29850, states cost bound pruned = 5461
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 22186, states generated = 57499, states cycle check pruned = 29851, states cost bound pruned = 5462
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 22216, states generated = 57579, states cycle check pruned = 29897, states cost bound pruned = 5466
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 22217, states generated = 57582, states cycle check pruned = 29898, states cost bound pruned = 5467
+Solution Found with cost of 22 in search time of 0.03125 sec
+Nodes expanded = 23302, states generated = 60525, states cycle check pruned = 31306, states cost bound pruned = 5917
+Solution Found with cost of 22 in search time of 0.046875 sec
+Nodes expanded = 24385, states generated = 63111, states cycle check pruned = 32675, states cost bound pruned = 6051
+Solution Found with cost of 22 in search time of 0.015625 sec
+Nodes expanded = 24852, states generated = 64209, states cycle check pruned = 33229, states cost bound pruned = 6128
+Solution Found with cost of 22 in search time of 0.0625 sec
+Nodes expanded = 25490, states generated = 65671, states cycle check pruned = 33984, states cost bound pruned = 6197
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 25491, states generated = 65677, states cycle check pruned = 33989, states cost bound pruned = 6197
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 25511, states generated = 65722, states cycle check pruned = 34012, states cost bound pruned = 6199
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 25512, states generated = 65728, states cycle check pruned = 34017, states cost bound pruned = 6199
+Solution Found with cost of 22 in search time of 0.015625 sec
+
+Arian YazdanParast, [29.10.21 23:58]
+Nodes expanded = 25761, states generated = 66194, states cycle check pruned = 34220, states cost bound pruned = 6213
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 25762, states generated = 66200, states cycle check pruned = 34225, states cost bound pruned = 6213
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 25789, states generated = 66265, states cycle check pruned = 34262, states cost bound pruned = 6214
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 25790, states generated = 66271, states cycle check pruned = 34267, states cost bound pruned = 6214
+Solution Found with cost of 22 in search time of 0.0625 sec
+Nodes expanded = 27145, states generated = 69782, states cycle check pruned = 35999, states cost bound pruned = 6638
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 27146, states generated = 69785, states cycle check pruned = 36001, states cost bound pruned = 6638
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 27195, states generated = 69873, states cycle check pruned = 36039, states cost bound pruned = 6639
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 27196, states generated = 69876, states cycle check pruned = 36041, states cost bound pruned = 6639
+Solution Found with cost of 22 in search time of 0.015625 sec
+Nodes expanded = 27407, states generated = 70295, states cycle check pruned = 36237, states cost bound pruned = 6651
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 27408, states generated = 70298, states cycle check pruned = 36239, states cost bound pruned = 6651
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 27460, states generated = 70399, states cycle check pruned = 36286, states cost bound pruned = 6653
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 27461, states generated = 70402, states cycle check pruned = 36288, states cost bound pruned = 6653
+Solution Found with cost of 22 in search time of 0.15625 sec
+Nodes expanded = 31902, states generated = 81566, states cycle check pruned = 42302, states cost bound pruned = 7362
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 31903, states generated = 81572, states cycle check pruned = 42307, states cost bound pruned = 7362
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 31910, states generated = 81599, states cycle check pruned = 42326, states cost bound pruned = 7363
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 31911, states generated = 81605, states cycle check pruned = 42331, states cost bound pruned = 7363
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 31918, states generated = 81622, states cycle check pruned = 42340, states cost bound pruned = 7364
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 31919, states generated = 81628, states cycle check pruned = 42345, states cost bound pruned = 7364
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 31926, states generated = 81648, states cycle check pruned = 42357, states cost bound pruned = 7365
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 31927, states generated = 81654, states cycle check pruned = 42362, states cost bound pruned = 7365
+Solution Found with cost of 22 in search time of 0.015625 sec
+Nodes expanded = 31934, states generated = 81687, states cycle check pruned = 42387, states cost bound pruned = 7366
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 31935, states generated = 81693, states cycle check pruned = 42392, states cost bound pruned = 7366
+Solution Found with cost of 22 in search time of 0.0 sec
+Nodes expanded = 31942, states generated = 81706, states cycle check pruned = 42397, states cost bound pruned = 7367
+Solution Found with cost of 22 in search time of 0.0 sec
+
+Arian YazdanParast, [29.10.21 23:58]
+Nodes expanded = 31943, states generated = 81712, states cycle check pruned = 42402, states cost bound pruned = 7367
+Solution Found with cost of 20 in search time of 0.0 sec
+Nodes expanded = 31969, states generated = 81778, states cycle check pruned = 42441, states cost bound pruned = 7368
+Solution Found with cost of 20 in search time of 0.0 sec
+Nodes expanded = 31970, states generated = 81784, states cycle check pruned = 42443, states cost bound pruned = 7371
+Solution Found with cost of 20 in search time of 0.03125 sec
+Nodes expanded = 32207, states generated = 83539, states cycle check pruned = 43430, states cost bound pruned = 7902
+Solution Found with cost of 20 in search time of 0.0 sec
+Nodes expanded = 32208, states generated = 83542, states cycle check pruned = 43431, states cost bound pruned = 7903
+Solution Found with cost of 20 in search time of 0.015625 sec
+Nodes expanded = 32407, states generated = 84384, states cycle check pruned = 43895, states cost bound pruned = 8082
+Solution Found with cost of 20 in search time of 0.0 sec
+Nodes expanded = 32408, states generated = 84390, states cycle check pruned = 43897, states cost bound pruned = 8085
+Solution Found with cost of 20 in search time of 0.015625 sec
+Nodes expanded = 32661, states generated = 85690, states cycle check pruned = 44595, states cost bound pruned = 8434
+Solution Found with cost of 20 in search time of 0.0 sec
+Nodes expanded = 32662, states generated = 85693, states cycle check pruned = 44596, states cost bound pruned = 8435
+Solution Found with cost of 20 in search time of 0.015625 sec
+Nodes expanded = 32827, states generated = 86992, states cycle check pruned = 45315, states cost bound pruned = 8850
+Solution Found with cost of 20 in search time of 0.0 sec
+Nodes expanded = 32828, states generated = 86998, states cycle check pruned = 45317, states cost bound pruned = 8853
+Solution Found with cost of 20 in search time of 0.015625 sec
+Nodes expanded = 33010, states generated = 87645, states cycle check pruned = 45682, states cost bound pruned = 8953
+Solution Found with cost of 20 in search time of 0.0 sec
+Nodes expanded = 33011, states generated = 87648, states cycle check pruned = 45683, states cost bound pruned = 8954
+Solution Found with cost of 20 in search time of 0.015625 sec
+Nodes expanded = 33152, states generated = 88532, states cycle check pruned = 46160, states cost bound pruned = 9220
+Solution Found with cost of 20 in search time of 0.0 sec
+Nodes expanded = 33153, states generated = 88538, states cycle check pruned = 46162, states cost bound pruned = 9223
+Solution Found with cost of 20 in search time of 0.03125 sec
+Nodes expanded = 33508, states generated = 90140, states cycle check pruned = 47075, states cost bound pruned = 9557
+Solution Found with cost of 20 in search time of 0.0 sec
+Nodes expanded = 33509, states generated = 90146, states cycle check pruned = 47077, states cost bound pruned = 9560
+Solution Found with cost of 20 in search time of 0.015625 sec
+Nodes expanded = 33680, states generated = 90996, states cycle check pruned = 47559, states cost bound pruned = 9757
+Solution Found with cost of 20 in search time of 0.0 sec
+Nodes expanded = 33681, states generated = 90999, states cycle check pruned = 47560, states cost bound pruned = 9758
+Solution Found with cost of 20 in search time of 0.015625 sec
+Nodes expanded = 33787, states generated = 91569, states cycle check pruned = 47866, states cost bound pruned = 9916
+Solution Found with cost of 20 in search time of 0.0 sec
+Nodes expanded = 33788, states generated = 91575, states cycle check pruned = 47868, states cost bound pruned = 9919
+Solution Found with cost of 20 in search time of 0.03125 sec
+Nodes expanded = 34039, states generated = 93314, states cycle check pruned = 48812, states cost bound pruned = 10463
+Solution Found with cost of 20 in search time of 0.0 sec
+Nodes expanded = 34040, states generated = 93317, states cycle check pruned = 48813, states cost bound pruned = 10464
+Solution Found with cost of 20 in search time of 0.03125 sec
+
+Arian YazdanParast, [29.10.21 23:58]
+Nodes expanded = 34474, states generated = 95323, states cycle check pruned = 49926, states cost bound pruned = 10923
+Solution Found with cost of 20 in search time of 0.0 sec
+Nodes expanded = 34475, states generated = 95326, states cycle check pruned = 49927, states cost bound pruned = 10924
+Search Failed! No solution found.
+Nodes expanded = 41211, states generated = 114771, states cycle check pruned = 60392, states cost bound pruned = 13168
+*************************************
+PROBLEM 4
+Solution Found with cost of 41 in search time of 0.4375 sec
+Nodes expanded = 10733, states generated = 24067, states cycle check pruned = 13334, states cost bound pruned = 0
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 10775, states generated = 24176, states cycle check pruned = 13396, states cost bound pruned = 5
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 10842, states generated = 24304, states cycle check pruned = 13454, states cost bound pruned = 8
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 10936, states generated = 24547, states cycle check pruned = 13581, states cost bound pruned = 30
+Solution Found with cost of 41 in search time of 0.015625 sec
+Nodes expanded = 11027, states generated = 24771, states cycle check pruned = 13703, states cost bound pruned = 41
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11036, states generated = 24790, states cycle check pruned = 13712, states cost bound pruned = 42
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11040, states generated = 24798, states cycle check pruned = 13715, states cost bound pruned = 43
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11078, states generated = 24921, states cycle check pruned = 13780, states cost bound pruned = 63
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11091, states generated = 24956, states cycle check pruned = 13798, states cost bound pruned = 67
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11252, states generated = 25365, states cycle check pruned = 14009, states cost bound pruned = 104
+Solution Found with cost of 41 in search time of 0.015625 sec
+Nodes expanded = 11332, states generated = 25561, states cycle check pruned = 14105, states cost bound pruned = 124
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11386, states generated = 25815, states cycle check pruned = 14234, states cost bound pruned = 195
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11411, states generated = 25947, states cycle check pruned = 14299, states cost bound pruned = 237
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11417, states generated = 25989, states cycle check pruned = 14319, states cost bound pruned = 253
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11560, states generated = 26355, states cycle check pruned = 14512, states cost bound pruned = 283
+Solution Found with cost of 41 in search time of 0.015625 sec
+Nodes expanded = 11686, states generated = 26770, states cycle check pruned = 14755, states cost bound pruned = 329
+Search Failed! No solution found.
+Nodes expanded = 17362, states generated = 42652, states cycle check pruned = 24424, states cost bound pruned = 866
+*************************************
+PROBLEM 5
+Solution Found with cost of 41 in search time of 0.40625 sec
+Nodes expanded = 10733, states generated = 24067, states cycle check pruned = 13334, states cost bound pruned = 0
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 10775, states generated = 24176, states cycle check pruned = 13396, states cost bound pruned = 5
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 10842, states generated = 24304, states cycle check pruned = 13454, states cost bound pruned = 8
+Solution Found with cost of 41 in search time of 0.0 sec
+
+Arian YazdanParast, [29.10.21 23:58]
+Nodes expanded = 10936, states generated = 24547, states cycle check pruned = 13581, states cost bound pruned = 30
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11027, states generated = 24771, states cycle check pruned = 13703, states cost bound pruned = 41
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11036, states generated = 24790, states cycle check pruned = 13712, states cost bound pruned = 42
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11040, states generated = 24798, states cycle check pruned = 13715, states cost bound pruned = 43
+Solution Found with cost of 41 in search time of 0.015625 sec
+Nodes expanded = 11078, states generated = 24921, states cycle check pruned = 13780, states cost bound pruned = 63
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11091, states generated = 24956, states cycle check pruned = 13798, states cost bound pruned = 67
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11252, states generated = 25365, states cycle check pruned = 14009, states cost bound pruned = 104
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11332, states generated = 25561, states cycle check pruned = 14105, states cost bound pruned = 124
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11386, states generated = 25815, states cycle check pruned = 14234, states cost bound pruned = 195
+Solution Found with cost of 41 in search time of 0.015625 sec
+Nodes expanded = 11411, states generated = 25947, states cycle check pruned = 14299, states cost bound pruned = 237
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11417, states generated = 25989, states cycle check pruned = 14319, states cost bound pruned = 253
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11560, states generated = 26355, states cycle check pruned = 14512, states cost bound pruned = 283
+Solution Found with cost of 41 in search time of 0.0 sec
+Nodes expanded = 11686, states generated = 26770, states cycle check pruned = 14755, states cost bound pruned = 329
+Search Failed! No solution found.
+Nodes expanded = 17362, states generated = 42652, states cycle check pruned = 24424, states cost bound pruned = 866
+*************************************
+PROBLEM 6

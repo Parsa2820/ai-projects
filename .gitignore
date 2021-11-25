@@ -1,6 +1,7 @@
 book
 lecture note
 slides
+exams/samples
 *.aux
 *.fdb_latexmk
 *.fls

@@ -2,7 +2,6 @@ import numpy as np
 import random
 import time
 from Helper_codes.graphics import *
-from copy import deepcopy
 
 
 class Cell:
@@ -16,8 +15,7 @@ class Cell:
     def __init__(self, *args): 
     
         if isinstance(args[0], Cell):
-            c1 = args[0]
-            cell = deepcopy(c1)
+            cell = args[0]
             self.__y = cell.getY()
             self.__x = cell.getX()
             self.__color = cell.getColor()
@@ -150,7 +148,7 @@ class NaivePlayer(Player):
 class Board:
 
     __size = 8
-    maxNumberOfMoves = 80
+    __maxNumberOfMoves = 80
     __cells = [[Cell for j in range(8)] for i in range(8)]
     __score = [int] * 2
     __numberOfMoves = 0
@@ -159,14 +157,9 @@ class Board:
     __playerTerminalSourceId = [int] * 2
 
     def __init__(self, *args): 
-        self.players = [Player for i in range(2)]
-        self.__terminals = [IntPair for i in range(8)]
-        self.__playerTerminalSourceId = [int] * 2
-        self.__cells = [[Cell for j in range(8)] for i in range(8)]
+        
         if isinstance(args[0], list):
-            
             self.players = args[0]
-            
             for i in range(self.__size):
                 for j in range(self.__size):
                     self.__cells[i][j] = Cell(i, j, 0)
@@ -192,24 +185,20 @@ class Board:
     
         elif isinstance(args[0], Board):
     
-            b1 = args[0]
-            
-            board = (deepcopy(b1))
+            self.players = [Player for i in range(2)]
+            board = args[0]
 
             for i in range(self.__size):
                 for j in range(self.__size):
-                    self.__cells[i][j] = Cell(deepcopy(board.__cells[i][j]))
-
-            p1 = Player(board.players[0].getCol(), board.players[0].getX(), board.players[0].getY())
-            p2 = Player(board.players[1].getCol(), board.players[1].getX(), board.players[1].getY())
-            self.players = [p1,p2]          
-            self.__terminals = deepcopy(board.__terminals)
+                    self.__cells[i][j] = Cell(board.__cells[i][j])
+                    
+            
+            self.__terminals = board.__terminals
             self.__numberOfMoves = board.getNumberOfMoves()
             self.__score = board.__score
             self.__playerTerminalSourceId[0] = board.__playerTerminalSourceId[0]
             self.__playerTerminalSourceId[1] = board.__playerTerminalSourceId[1]
     
-
 
     def getCell(self, x, y):
         return self.__cells[x][y]
@@ -227,6 +216,9 @@ class Board:
 
 
     def move(self, nextPlace, playerColor):
+        log_path = "C:\\Users\\parsa\\Desktop\\log.txt"
+        with open(log_path, "a") as f:
+            f.write(f"In function move : {self.__numberOfMoves}\n")
         self.__numberOfMoves += 1
         currentPlace = IntPair(self.players[playerColor-1].getX(), self.players[playerColor-1].getY())
         if ((nextPlace.x < 0) | (nextPlace.y < 0) | (nextPlace.x >= self.__size) | (nextPlace.y >= self.__size)):
@@ -237,7 +229,7 @@ class Board:
             return -1
         elif ((nextPlace.x == self.players[2-playerColor].getX()) and (nextPlace.y == self.players[2-playerColor].getY())):
             return -1
-        elif (self.__numberOfMoves > self.maxNumberOfMoves):
+        elif (self.__numberOfMoves > self.__maxNumberOfMoves):
             return -2
         else:
             id = self.__cells[nextPlace.x][nextPlace.y].getId()
@@ -283,35 +275,35 @@ class Board:
         
         score = 1
         checked[x][y] = True
-        if ((x+1 < self.__size) and (self.getCell(x+1, y).getColor() == 0) and (not checked[x+1][y])):
+        if ((x+1 < self.__size) and (self.getCell(x+1, y).getColor() == 0) and (~checked[x+1][y])):
             checked[x+1][y] = True
             score += self.movableSquares(x + 1, y, checked)
 
-        if ((y+1 < self.__size) and (self.getCell(x, y+1).getColor() == 0) and (not checked[x][y+1])):
+        if ((y+1 < self.__size) and (self.getCell(x, y+1).getColor() == 0) and (~checked[x][y+1])):
             checked[x][y+1] = True
             score += self.movableSquares(x, y + 1, checked)
         
-        if ((x-1 >= 0) and (self.getCell(x-1, y).getColor() == 0) and (not checked[x-1][y])):
+        if ((x-1 >= 0) and (self.getCell(x-1, y).getColor() == 0) and (~checked[x-1][y])):
             checked[x-1][y] = True
             score += self.movableSquares(x - 1, y, checked)
         
-        if ((y-1 >= 0) and (self.getCell(x, y-1).getColor() == 0) and (not checked[x][y-1])):
+        if ((y-1 >= 0) and (self.getCell(x, y-1).getColor() == 0) and (~checked[x][y-1])):
             checked[x][y-1] = True
             score += self.movableSquares(x, y - 1, checked)
         
-        if ((y+1 < self.__size) and (x+1 < self.__size) and (self.getCell(x+1, y+1).getColor() == 0) and (not checked[x+1][y+1])):
+        if ((y+1 < self.__size) and (x+1 < self.__size) and (self.getCell(x+1, y+1).getColor() == 0) and (~checked[x+1][y+1])):
             checked[x+1][y+1] = True
             score += self.movableSquares(x+1, y+1, checked)
         
-        if ((y+1 < self.__size) and (x-1 >= 0) and (self.getCell(x-1, y+1).getColor() == 0) and (not checked[x-1][y+1])):
+        if ((y+1 < self.__size) and (x-1 >= 0) and (self.getCell(x-1, y+1).getColor() == 0) and (~checked[x-1][y+1])):
             checked[x-1][y+1] = True
             score += self.movableSquares(x-1, y + 1, checked)
         
-        if ((y-1 >= 0) and (x+1 < self.__size) and (self.getCell(x+1, y-1).getColor() == 0) and (not checked[x+1][y-1])):
+        if ((y-1 >= 0) and (x+1 < self.__size) and (self.getCell(x+1, y-1).getColor() == 0) and (~checked[x+1][y-1])):
             checked[x+1][y-1] = True
             score += self.movableSquares(x+1, y - 1, checked)
         
-        if ((y-1 >= 0) and (x-1>=0) and (self.getCell(x-1, y-1).getColor() == 0) and (not checked[x-1][y-1])):
+        if ((y-1 >= 0) and (x-1>=0) and (self.getCell(x-1, y-1).getColor() == 0) and (~checked[x-1][y-1])):
             checked[x-1][y-1] = True
             score += self.movableSquares(x-1, y - 1, checked)
         
@@ -340,7 +332,6 @@ class Game:
                     
             
     def __init__(self, p1, p2):
-        self.__players = [Player for i in range(2)]
         self.__players[0] = p1
         self.__players[1] = p2
         self.__initialX1 = p1.getX()
@@ -350,6 +341,9 @@ class Game:
          
                    
     def start(self, numberOfMatches):
+        log_path = "C:\\Users\\parsa\\Desktop\\log.txt"
+        with open(log_path, "a") as f:
+            f.write(f"In function start\n")
         for k in range(numberOfMatches):
             __turn = 0
             __nextPlace = None

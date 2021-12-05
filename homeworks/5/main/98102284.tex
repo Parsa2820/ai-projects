@@ -1,0 +1,141 @@
+\documentclass{university}
+
+\course{هوش مصنوعی}
+\subject{تمرین پنجم بخش اول}
+\professor{دکتر رهبان}
+
+\begin{document}
+
+\setupdocument
+
+\section{}
+از آنجایی که 
+\lr{$k$} 
+استیت داریم، 
+\lr{$k$} 
+پارامتر برای نشان دادن استیت اولیه نیاز داریم. 
+
+برای هر استیت 
+\lr{$S_i$} 
+با یک احتمالی به استیت 
+\lr{$S_j$} 
+می‌رویم که 
+\lr{$1 \leq i, j \leq k$}
+است. پس در اینجا نیز 
+\lr{$k^2$}تا 
+پارامتر داریم. 
+
+هر مشاهده 
+\lr{$E_i$} 
+که داشته باشیم، با یک احتمال در استیت 
+\lr{$S_j$}
+هستیم که 
+\lr{$1 \leq i \leq m$}
+و
+\lr{$1 \leq j \leq k$}
+است. 
+پس در اینجا هم 
+\lr{$m\times k$} 
+پارامتر داریم. 
+
+$$
+\text{\lr{Number of Parameters}} = k + k^2 + m \times k
+$$
+
+\subsection{}
+
+در جدول 
+\ref{tab:forward}
+مراحل اجرای الگوریتم را مشاهده می‌کنیم. اگر سطرهای آخرین جدول را جمع بزنیم احتمال خواسته شده به دست می‌آید.
+
+$$
+0.12426400800000002 + 0.000950699 = 0.12521470700000004 \approx 0.125
+$$
+
+\begin{latin}
+\begin{table}
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline 
+        $S_1$ & $P(S_1, O_1 = 0)$ \\
+        \hline 
+        A & $0.99 \times 0.8 = 0.792$ \\
+        B & $0.01 \times 0.1 = 0.001$ \\
+        \hline 
+    \end{tabular}
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline 
+        $S_2$ & $P(S_2, O_1 = 0, O_2 = 1)$ \\
+        \hline 
+        A & $0.2 \times (0.99 \times 0.792 + 0.01 \times 0.001) = 0.156818$ \\
+        B & $0.9 \times (0.01 \times 0.792 + 0.99 \times 0.001) = 0.008019$ \\
+        \hline 
+    \end{tabular}
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline 
+        $S_3$ & $P(S_3, O_1 = 0, O_2 = 1, O_3 = 0)$ \\
+        \hline 
+        A & $0.8 \times (0.99 \times 0.156818 + 0.01 \times 0.008019) = 0.12426400800000002$ \\
+        B & $0.1 \times (0.01 \times 0.156818 + 0.99 \times 0.008019) = 0.000950699$ \\
+        \hline 
+    \end{tabular}
+    \caption{Forward algorithm}
+    \label{tab:forward}
+\end{table}
+\end{latin}
+
+
+\subsection{}
+با توجه به جدول 
+\ref{tab:viterbi}
+که مراحل اجرای الگوریتم ویتربی را نشان می‌دهد، محتمل‌ترین دنباله در زیر آمده است. 
+$$
+S_1 = A, S_2 = A, S_3 = A
+$$
+
+\begin{latin}
+\begin{table}
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline 
+        $S_1$ & $P(S_1, O_1 = 0)$ \\
+        \hline 
+        A & $0.99 \times 0.8 = 0.792$ \\
+        B & $0.01 \times 0.1 = 0.001$ \\
+        \hline 
+    \end{tabular}
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline 
+        $S_2$ & $P(S_2, O_1 = 0, O_2 = 1)$ & arg max \\
+        \hline 
+        A & $0.2 \times \max(0.99 \times 0.792, 0.01 \times 0.001) = 0.156816$ & $S_1 = A$\\
+        B & $0.9 \times \max(0.01 \times 0.792, 0.99 \times 0.001) = 0.007128$ & $S_1 = A$\\
+        \hline 
+    \end{tabular}
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline 
+        $S_3$ & $P(S_3, O_1 = 0, O_2 = 1, O_3 = 0)$ & arg max \\
+        \hline 
+        A & $0.8 \times \max(0.99 \times 0.156816, 0.01 \times 0.007128) = 0.124198272$ & $S_2 = A$\\
+        B & $0.1 \times \max(0.01 \times 0.156816, 0.99 \times 0.007128) = 0.000705672$ & $S_2 = B$\\
+        \hline 
+    \end{tabular}
+    \caption{Viterbi algorithm}
+    \label{tab:viterbi}
+\end{table}
+\end{latin}
+
+\subsection{}
+در این مثال خاص چون احتمال تغییر حالت از 
+\lr{A} 
+به 
+\lr{B} 
+و برعکس بسیار کم است، مجموع 
+\lr{transsion probability}ها 
+شبیه به ماکسیمم گرفتن عمل می‌کند. (ضریب یکی انقدر کوچک است که باعث می‌شود مجوع خیلی نزدیک به عدد دیگر باشد)
+ولی این برابری در حالت کلی برقرار نیست. 
+\end{document}

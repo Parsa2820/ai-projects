@@ -176,115 +176,227 @@ def backtracking_search(csp_properties):
         assignments_str = ' '.join(map(str, assignments_ordered))
     return assignments_str
 
+def board_str(board):
+    result = ''
+    result += '\n'
+    result += str(board.players[0].getX()) + ' '
+    result += str(board.players[0].getY()) + '\n'
+    result += str(board.players[1].getX()) + ' '
+    result += str(board.players[1].getY()) + '\n'
+    n = board.getSize()
+    for i in range(n):
+        for j in range(n):
+            result += str(board.getCell(i, j).getColor()) + ' '
+        result += '\n'
+    return result
 
-
-from functools import reduce
-
+from random import shuffle
 
 class MinimaxPlayer(Player):
-    def __init__(self, col, x, y, depth=-1):
+    def __init__(self, col, x, y, depth=4):
         super().__init__(col, x, y)
         self.moveF = [self.moveU, self.moveD, self.moveL, self.moveR,
                       self.moveUR, self.moveUL, self.moveDR, self.moveDL]
         self.depth = depth
 
     def moveU(self, x, y, board):
-        if 0 < x < board.getSize() and 0 < y-1 < board.getSize() and board.__cells[x][y-1].getColor() != 0:
+        if 0 <= x < board.getSize() and 0 <= y-1 < board.getSize() and board.getCell(x, y-1).getColor() == 0:
             return IntPair(x, y-1)
         return False
 
     def moveD(self, x, y, board):
-        if 0 < x < board.getSize() and 0 < y+1 < board.getSize() and board.__cells[x][y+1].getColor() != 0:
+        if 0 <= x < board.getSize() and 0 <= y+1 < board.getSize() and board.getCell(x, y+1).getColor() == 0:
             return IntPair(x, y+1)
         return False
 
     def moveR(self, x, y, board):
-        if 0 < x+1 < board.getSize() and 0 < y < board.getSize() and board.__cells[x+1][y].getColor() != 0:
+        if 0 <= x+1 < board.getSize() and 0 <= y < board.getSize() and board.getCell(x+1, y).getColor() == 0:
             return IntPair(x+1, y)
         return False
 
     def moveL(self, x, y, board):
-        if 0 < x-1 < board.getSize() and 0 < y < board.getSize() and board.__cells[x-1][y].getColor() != 0:
+        if 0 <= x-1 < board.getSize() and 0 <= y < board.getSize() and board.getCell(x-1, y).getColor() == 0:
             return IntPair(x-1, y)
         return False
 
     def moveUR(self, x, y, board):
-        if 0 < x+1 < board.getSize() and 0 < y-1 < board.getSize() and board.__cells[x+1][y-1].getColor() != 0:
+        if 0 <= x+1 < board.getSize() and 0 <= y-1 < board.getSize() and board.getCell(x+1, y-1).getColor() == 0:
             return IntPair(x+1, y-1)
         return False
 
     def moveUL(self, x, y, board):
-        if 0 < x-1 < board.getSize() and 0 < y-1 < board.getSize() and board.__cells[x-1][y-1].getColor() != 0:
+        if 0 <= x-1 < board.getSize() and 0 <= y-1 < board.getSize() and board.getCell(x-1, y-1).getColor() == 0:
             return IntPair(x-1, y-1)
         return False
 
     def moveDR(self, x, y, board):
-        if 0 < x+1 < board.getSize() and 0 < y+1 < board.getSize() and board.__cells[x+1][y+1].getColor() != 0:
+        if 0 <= x+1 < board.getSize() and 0 <= y+1 < board.getSize() and board.getCell(x+1, y+1).getColor() == 0:
             return IntPair(x+1, y+1)
         return False
 
     def moveDL(self, x, y, board):
-        if 0 < x-1 < board.getSize() and 0 < y+1 < board.getSize() and board.__cells[x-1][y+1].getColor() != 0:
+        if 0 <= x-1 < board.getSize() and 0 <= y+1 < board.getSize() and board.getCell(x-1, y+1).getColor() == 0:
             return IntPair(x-1, y+1)
         return False
 
-    def canMove(self, x, y, board):
-        all_directions = [f(x, y, board) for f in self.moveF]
-        return (reduce(lambda a, b: a or b, all_directions, False), all_directions)
+    def adverseCol(self):
+        if self.getCol() == 1:
+            return 2
+        return 1
+
+    def is_adverse_place(self, board: Board, place, col):
+        adverse = board.players[1 - col]
+        return adverse.getX() == place.x and adverse.getY() == place.y
+
+    def canMove(self, x, y, board, col):
+        all_directions = []
+        shuffle(self.moveF)
+        for f in self.moveF:
+            can_move_f = f(x, y, board)
+            if can_move_f and (not self.is_adverse_place(board, can_move_f, col)):
+                all_directions.append(can_move_f)
+        return all_directions if len(all_directions) > 0 else False
 
     def minValue(self, board, alpha, beta, depth):
-        pass
+        if depth == 0:
+            return board.getScore(self.getCol())
+        col = self.adverseCol()
+        can_move = self.canMove(board.getPlayerX(col), board.getPlayerY(col), board, col)
+        min_val = float('+inf')
+        if not can_move:
+            return -1
+        else:
+            for move in can_move:
+                board_clone = Board(board)
+                board_clone.move(move, col)
+                val = self.maxValue(board_clone, alpha, beta, depth-1)
+                if val < min_val:
+                    min_val = val
+                if min_val <= alpha:
+                    return min_val
+                if min_val < beta:
+                    beta = min_val
+        return min_val
 
-    def maxValue(self, board, alpha, beta, depth):
-        pass
+    def maxValue(self, board: Board, alpha, beta, depth):
+        if depth == 0:
+            return board.getScore(self.getCol())
+        can_move = self.canMove(board.getPlayerX(self.getCol()), board.getPlayerY(self.getCol()), board, self.getCol())
+        max_val = float('-inf')
+        if not can_move:
+            return -1
+        else:
+            for move in can_move:
+                board_clone = Board(board)
+                board_clone.move(move, self.getCol())
+                val = self.minValue(board_clone, alpha, beta, depth-1)
+                if val > max_val:
+                    max_val = val
+                if max_val >= beta:
+                    return max_val
+                if max_val > alpha:
+                    alpha = max_val
+        return max_val
 
-    def getMove(self, board: Board, col=self.getCol()):
+    def getMove(self, board):
         alpha = float('-inf')
         beta = float('inf')
         next = IntPair(-20, -20)
 
-        can_move, moves = self.canMove(board.getPlayerX(self.getCol()), board.getPlayerY(self.getCol()), board)
+        can_move = self.canMove(board.getPlayerX(self.getCol()), board.getPlayerY(self.getCol()), board, self.getCol())
 
+        start = time.time()
         if not can_move:
             return IntPair(-10, -10)
         else:
-            v = float('-inf')
-            for move in moves:
-                self.maxValue(board )
-        
+            max_val = float('-inf')
+            for move in can_move:
+                board_clone = Board(board)
+                board_clone.move(move, self.getCol())
+                val = self.minValue(board_clone, alpha, beta, self.depth-1)
+                if val > max_val:
+                    max_val = val
+                    next = move
+
+        if (time.time() - start > 2):
+            return IntPair(-10, -10)
+        with open('log.txt', 'a') as f:
+            f.write(board_str(board))
+            f.write('harekat dadam ' + str(next.x) + ' ' + str(next.y) + '\n')
         return next
 
-        x_next = self.getX()
-        y_next = self.getY()
-        start = time.time()
-        while ((x_next == self.getX()) and (y_next == self.getY())):
-            rnd = random.randrange(4)
-            if (time.time() - start > 2):
-                return IntPair(-10, -10)
-            if ((rnd == 0) and (self.getX() + 1 < board.getSize()) and (board.getCell(self.getX() + 1, self.getY()).getColor() == 0)):
-                x_next += 1
-            elif ((rnd == 1) and (self.getX() - 1 >= 0) and (board.getCell(self.getX() - 1, self.getY()).getColor() == 0)):
-                x_next -= 1
-            elif ((rnd == 2) and (self.getY() + 1 < board.getSize()) and (board.getCell(self.getX(), self.getY() + 1).getColor() == 0)):
-                y_next += 1
-            elif ((rnd == 3) and (self.getY() - 1 >= 0) and (board.getCell(self.getX(), self.getY() - 1).getColor() == 0)):
-                y_next -= 1
-
-        return IntPair(x_next, y_next)
-
-
-p1 = NaivePlayer(1, 0, 0)
+with open("log.txt", "w") as log:
+    log.write("")
+p1 = MinimaxPlayer(1, 0, 0, 4)
 p2 = NaivePlayer(2, 7, 7)
 g = Game(p1, p2)
 numberOfMatches = 1
 score1, score2 = g.start(numberOfMatches)
 print(score1/numberOfMatches)
 
+import matplotlib.pyplot as plt
 
+numberOfRepeats = 10
+numberOfMatches = 4
+x = list(range(numberOfMatches+1))
+y = [0 for i in range(numberOfMatches+1)]
 
+for i in range(numberOfRepeats):
+    p1 = NaivePlayer(1, 0, 0)
+    p2 = MinimaxPlayer(2, 7, 7)
+    g = Game(p1, p2)
+    score1, score2 = g.start(numberOfMatches)
+    y[int(score1)] += 1
+    print(f'{i}th iteration done')
 
+plt.plot(x, y)
+plt.show()
 
+numberOfRepeats = 10
+numberOfMatches = 4
+x = list(range(numberOfMatches+1))
+y = [0 for i in range(numberOfMatches+1)]
 
+for i in range(numberOfRepeats):
+    p1 = MinimaxPlayer(1, 0, 0)
+    p2 = MinimaxPlayer(2, 7, 7)
+    g = Game(p1, p2)
+    score1, score2 = g.start(numberOfMatches)
+    y[int(score1)] += 1
+    print(f'{i}th iteration done')
 
+plt.plot(x, y)
+plt.show()
 
+depth = 5
+numberOfMatches = 4
+x = list(range(1, depth))
+y = [0 for i in range(1, depth)]
+
+for i in range(1, depth):
+    p1 = NaivePlayer(1, 0, 0)
+    p2 = MinimaxPlayer(2, 7, 7, i)
+    g = Game(p1, p2)
+    score1, score2 = g.start(numberOfMatches)
+    y[i-1] = score1
+    print(f'{i}th iteration done')
+
+plt.plot(x, y)
+plt.show()
+
+numberOfRepeats = 10
+numberOfMatches = 4
+x = list(range(numberOfMatches+1))
+y = [0 for i in range(numberOfMatches+1)]
+
+for i in range(numberOfRepeats):
+    p1 = MinimaxPlayer(1, 0, 0, 4)
+    p2 = MinimaxPlayer(2, 7, 7, 2)
+    g = Game(p1, p2)
+    score1, score2 = g.start(numberOfMatches)
+    y[int(score1)] += 1
+    print(f'{i}th iteration done')
+
+plt.plot(x, y)
+plt.show()
 

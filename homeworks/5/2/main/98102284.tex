@@ -1,0 +1,141 @@
+\documentclass[en]{university}
+
+\faculty{Department of Computer Engineering}
+\course{Artificial Intelligence}
+\subject{Assignment 5 part 2}
+\professor{Dr. Rohban}
+\student{Parsa Mohammadian}
+
+\begin{document}
+
+\setupdocument
+
+\section{}
+\subsection{}
+This is a trick which add a fix number to occurrence of each variable value. It 
+will garauntee that all probabilities are non-zero. So the model is not overfitted.
+
+\subsection{}
+First I write Naive Bayes based leaning result
+(table \ref{tab:naivebayes}).
+
+Now we can calculate the probability of each labels for given the query.
+
+\begin{multline*}
+    P(Y=Go | X_1 = 1, X_2 = 1, X_3 = 1, X_4 = 0) \\
+    = P(Y=Go) \times P(Y=Go | X_1 = 1) \times P(X_2 = 1 | Y=Go) \\ \times P(X_3 = 1 | Y=Go) \times P(X_4 = 0 | Y=Go) 
+\end{multline*}
+\begin{multline*}
+    P(Y=Stop | X_1 = 1, X_2 = 1, X_3 = 1, X_4 = 0) \\
+    = P(Y=Stop) \times P(Y=Stop | X_1 = 1) \times P(X_2 = 1 | Y=Stop) \\ \times P(X_3 = 1 | Y=Stop)  \times P(X_4 = 0 | Y=Stop)
+\end{multline*}
+Both $P(Y=Go | X_1 = 1)$ and $P(X_3 = 1 | Y=Stop)$ are zero. So the probability of all labels are zero, which is 
+because of overfitting.
+
+So we must use Laplace smoothing (a generalization technic) to avoid this problem. So I wrote Naive Bayes with Laplace
+smoothing result (table \ref{tab:naivebayes-laplace}). Based on this table and above equations, we calcualte each label 
+probability. 
+
+\begin{gather*}
+    Query = X_1 = 1, X_2 = 1, X_3 = 1, X_4 = 0 \\
+    P(Y=Go | Query) \propto \frac{5}{9} \times \frac{1}{7} \times  \frac{4}{7} \times \frac{6}{7} \times \frac{4}{7} = \frac{480}{21609} \\
+    P(Y=Stop | Query) \propto \frac{4}{9} \times \frac{4}{6} \times  \frac{4}{6} \times \frac{1}{6} \times \frac{1}{6} = \frac{64}{11664} \\
+    P(Y=Go | Query) > P(Y=Stop | Query)
+\end{gather*}
+
+Finally robot must \textbf{Go} for given query.
+
+
+
+\begin{table}
+\centering
+\begin{tabular}{|c|c|c|}
+    \hline
+    Y & P($X_1$ = 0|Y) & P($X_1$ = 1|Y) \\
+    \hline
+    Go & $\frac{5}{5}$ = 1 & 0 \\
+    \hline
+    Stop & $\frac{1}{4}$ & $\frac{3}{4}$ \\
+    \hline
+\end{tabular}
+\centering
+\begin{tabular}{|c|c|c|}
+    \hline
+    Y & P($X_2$ = 0|Y) & P($X_2$ = 1|Y) \\
+    \hline
+    Go & $\frac{2}{5}$ & $\frac{3}{5}$ \\
+    \hline
+    Stop & $\frac{1}{4}$ & $\frac{3}{4}$ \\
+    \hline
+\end{tabular}
+\centering
+\begin{tabular}{|c|c|c|}
+    \hline
+    Y & P($X_3$ = 0|Y) & P($X_3$ = 1|Y) \\
+    \hline
+    Go & $\frac{0}{5}$ = 0 & 1 \\
+    \hline
+    Stop & $\frac{4}{4}$ = 1 & 0 \\
+    \hline
+\end{tabular}
+\centering
+\begin{tabular}{|c|c|c|}
+    \hline
+    Y & P($X_4$ = 0|Y) & P($X_4$ = 1|Y) \\
+    \hline
+    Go & $\frac{3}{5}$ & $\frac{2}{5}$ \\
+    \hline
+    Stop & $\frac{0}{4}$ = 0 & 1 \\ 
+    \hline
+\end{tabular}
+\caption{Naive Bayes}
+\label{tab:naivebayes}
+\end{table}
+
+\begin{table}
+\centering
+\begin{tabular}{|c|c|c|}
+    \hline
+    Y & P($X_1$ = 0|Y) & P($X_1$ = 1|Y) \\
+    \hline
+    Go & $\frac{6}{7}$ & $\frac{1}{7}$ \\
+    \hline
+    Stop & $\frac{2}{6}$ & $\frac{4}{6}$ \\
+    \hline
+\end{tabular}
+\centering
+\begin{tabular}{|c|c|c|}
+    \hline
+    Y & P($X_2$ = 0|Y) & P($X_2$ = 1|Y) \\
+    \hline
+    Go & $\frac{3}{7}$ & $\frac{4}{7}$ \\
+    \hline
+    Stop & $\frac{2}{6}$ & $\frac{4}{6}$ \\
+    \hline
+\end{tabular}
+\centering
+\begin{tabular}{|c|c|c|}
+    \hline
+    Y & P($X_3$ = 0|Y) & P($X_3$ = 1|Y) \\
+    \hline
+    Go & $\frac{1}{7}$ & $\frac{6}{7}$ \\
+    \hline
+    Stop & $\frac{5}{6}$ & $\frac{1}{6}$ \\
+    \hline
+\end{tabular}
+\centering
+\begin{tabular}{|c|c|c|}
+    \hline
+    Y & P($X_4$ = 0|Y) & P($X_4$ = 1|Y) \\
+    \hline
+    Go & $\frac{4}{7}$ & $\frac{3}{7}$ \\
+    \hline
+    Stop & $\frac{1}{6}$ & $\frac{5}{6}$ \\ 
+    \hline
+\end{tabular}
+\caption{Naive Bayes with Laplace smoothing}
+\label{tab:naivebayes-laplace}
+\end{table}
+
+
+\end{document}

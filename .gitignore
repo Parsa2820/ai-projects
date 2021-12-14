@@ -9,4 +9,4 @@ exams/samples
 *.synctex.gz
 *.toc
 *.xdv
-
+*.ini

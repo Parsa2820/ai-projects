@@ -1,0 +1,59 @@
+\documentclass[en]{university}
+
+\faculty{Department of Computer Engineering}
+\course{Artificial Intelligence}
+\subject{Assignment 6 Part 1}
+\professor{Dr. Rohban}
+\student{Parsa Mohammadian}
+
+\begin{document}
+
+\setupdocument
+
+\section{}
+
+\subsection{}
+
+\begin{gather*}
+    f(w_2, w_1, w_0) = \sum_i (\hat{y}^i - y^i)^2 = \sum_i (w_2 x_i^2 + w_1 x_i + w_0 - y^i)^2 \\
+    = \sum_i w_2^2 x_i^4 + w_2 x_i^2 w_1 x_i + w_2 x_i^2 w_0 - w_2 x_i^2 y^i + w_1 x_i w_2 x_i^2 + w_1^2 x_i^2 \\
+    + w_1 x_i w_0 - w_1 x_i y^i + w_0 w_2 x_i^2 + w_0 w_1 x_i + w_0^2 - w_0 y^i \\
+    - y^i w_2 x_i^2 - y^i w_1 x_i - y^i w_0 - (y^i)^2 \\
+    = \sum_i w_2^2 x_i^4 + 2 w_2 x_i^3 w_1 + 2 w_2 x_i^2 w_0 - 2 w_2 x_i^2 y^i + w_1^2 x_i^2 \\
+    + 2 w_1 x_i w_0 - 2 w_1 x_i y^i + w_0^2 - 2 w_0 y^i - (y^i)^2 \\
+    \nabla f = \begin{bmatrix}
+        \frac{\partial f(w_2, w_1, w_0)}{\partial w_0} \\
+        \frac{\partial f(w_2, w_1, w_0)}{\partial w_1} \\
+        \frac{\partial f(w_2, w_1, w_0)}{\partial w_2}
+    \end{bmatrix} = \begin{bmatrix}
+        \sum_i 2 w_2 x_i^2 + 2 w_1 x_i + 2 w_0 - 2 y^i \\
+        \sum_i 2 w_2 x_i^3 + 2 w_1 x_i^2 + 2 x_i w_0 - 2 x_i y^i \\
+        \sum_i 2 w_2 x_i^4 + 2 x_i^3 w_1 + 2 x_i^2 w_0 - 2 x_i^2 y^i
+    \end{bmatrix}
+\end{gather*}
+
+\subsection{}
+\begin{gather*}
+    w^+ = w - \alpha \nabla f(w) \\
+    \begin{bmatrix}
+        w_0^+ \\
+        w_1^+ \\
+        w_2^+
+    \end{bmatrix}
+    = \begin{bmatrix}
+        w_0 - \alpha \frac{\partial f(w_2, w_1, w_0)}{\partial w_0} \\
+        w_1 - \alpha \frac{\partial f(w_2, w_1, w_0)}{\partial w_1} \\
+        w_2 - \alpha \frac{\partial f(w_2, w_1, w_0)}{\partial w_2}
+    \end{bmatrix} \\
+    = \begin{bmatrix}
+        w_0 - \alpha \sum_i 2 w_2 x_i^2 + 2 w_1 x_i + 2 w_0 - 2 y^i \\
+        w_1 - \alpha \sum_i 2 w_2 x_i^3 + 2 w_1 x_i^2 + 2 x_i w_0 - 2 x_i y^i \\
+        w_2 - \alpha \sum_i 2 w_2 x_i^4 + 2 x_i^3 w_1 + 2 x_i^2 w_0 - 2 x_i^2 y^i
+    \end{bmatrix}
+\end{gather*}
+
+By increasing the learning rate $\alpha$ to a large number, it is possible that algorithm does not converge. At the other hand, when 
+we decrease the learning rate enough, we can be sure that algorithm converges to optimal solution, But the smaller the learning rate,
+the more time it takes to converge. We should choose the learning rate that is appropriate for our problem.
+
+\end{document}

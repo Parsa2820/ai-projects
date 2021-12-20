@@ -142,9 +142,9 @@ class BN(object):
         self.G = {
             'A': [['C', 'D'], []],
             'B': [['E'], []],
-            'C': [['D', 'G'], ['A', 'E']],
-            'D': [['F', 'G'], ['A', 'C']],
-            'E': [['C', 'G'], ['B']],
+            'C': [['D'], ['A', 'E']],
+            'D': [['F'], ['A', 'C']],
+            'E': [['C'], ['B']],
             'F': [[], ['D']],
             'G': [[], ['C', 'D', 'E']]
         }
@@ -449,7 +449,7 @@ for query in queries:
 %store queries_error_lists
 
 
-%store - r queries_error_lists
+%store -r queries_error_lists
 
 for error_lists in queries_error_lists:
     fig, axs = plt.subplots(2, 2, figsize=(20, 10))
@@ -478,7 +478,7 @@ for query in queries:
 %store queries_error_lists_gibbs
 
 
-%store - r queries_error_lists_gibbs
+%store -r queries_error_lists_gibbs
 
 for error_lists in queries_error_lists_gibbs:
     fig, axs = plt.subplots(2, 2, figsize=(20, 10))
@@ -509,18 +509,36 @@ def P_coor0(coor0):
 
 
 def P_coor_given_prevCoor(coor, prev_coor):
-    pass
+    x, y = abs(coor[0] - prev_coor[0]), abs(coor[1] - prev_coor[1])
+    p_x = scipy.stats.expon.pdf(x, scale=moving_model.get('X_STEP'))
+    p_y = scipy.stats.expon.pdf(y, scale=moving_model.get('Y_STEP'))
+    return 0.5 * p_x * p_y
 
 
 def P_towerCoor_given_coor(tower_coor, tower_std, coor):
-    pass
+    tower_x, tower_y = tower_coor
+    x, y = coor
+    p_x = scipy.stats.norm.pdf(tower_x, loc=x, scale=tower_std)
+    p_y = scipy.stats.norm.pdf(tower_y, loc=y, scale=tower_std)
+    return p_x, p_y
 
 
 def P_record_given_coor(rec, coor, towers_info):
-    pass
+    p_x = 1.0
+    p_y = 1.0
+    for i, r in enumerate(rec, start=1):
+        x, y = P_towerCoor_given_coor(r, towers_info[f'{i}']['std'], coor)
+        p_x *= x
+        p_y *= y
+    return p_x, p_y
 
 
-
+print(real_coordinates)
+print(moving_model)
+print(P_coor_given_prevCoor([1087.2334169025748, -57.16536812999969], [1044.9362406077148, 72.34399023381683]))
+P_towerCoor_given_coor([10, 10], 1, [10, 10])
+print(P_towerCoor_given_coor((1405, 600), 60, (1044.936241, 72.343990)))
+towers_info
 
 
 
@@ -552,6 +570,27 @@ for x0 in range(int(coor0_estimations[-1][0] - interval), int(coor0_estimations[
 
 
 
+                P_c0 = P_coor0(coor0)
+                P_rec0_given_x0, P_rec0_given_y0 = P_record_given_coor(
+                    rec0, coor0, towers_info)
+                P_c1_given_c0 = P_coor_given_prevCoor(coor1, coor0)
+                P_rec1_given_x1, P_rec1_given_y1 = P_record_given_coor(
+                    rec1, coor1, towers_info)
+
+                Px = P_rec0_given_x0 * P_c1_given_c0 * P_rec1_given_x1 * P_c0
+                Py = P_rec0_given_y0 * P_c1_given_c0 * P_rec1_given_y1 * P_c0
+
+                if Px > max_Px:
+                    best_x0 = x0
+                    best_x1 = x1
+                    max_Px = Px
+
+                if Py > max_Py:
+                    best_y0 = y0
+                    best_y1 = y1
+                    max_Py = Py
+
+
 coor0_estimations.append((best_x0, best_y0))
 coor1_estimations.append((best_x1, best_y1))
 
@@ -560,19 +599,167 @@ coor1_estimations.append((best_x1, best_y1))
 
 
 
+max_Px, max_Py = 0, 0
+interval, step = 20, 5
+
+best_x0, best_y0 = None, None
+best_x1, best_y1 = None, None
+best_x2, best_y2 = None, None
+
+towers_mean_x2, towers_mean_y2 = get_mean_towers_coor(2, tower_records)
+
+for x0 in range(int(coor0_estimations[-1][0] - interval), int(coor0_estimations[-1][0] + interval), step):
+    for y0 in range(int(coor0_estimations[-1][1] - interval), int(coor0_estimations[-1][1] + interval), step):
+
+        coor0 = (x0, y0)
+        rec0 = tower_records[0]
+        P_c0 = P_coor0(coor0)
+        P_rec0_given_x0, P_rec0_given_y0 = P_record_given_coor(
+            rec0, coor0, towers_info)
+
+        for x1 in range(int(coor1_estimations[-1][0] - interval), int(coor1_estimations[-1][0] + interval), step):
+            for y1 in range(int(coor1_estimations[-1][1] - interval), int(coor1_estimations[-1][1] + interval), step):
+
+                coor1 = (x1, y1)
+                rec1 = tower_records[1]
+                P_c1_given_c0 = P_coor_given_prevCoor(coor1, coor0)
+                P_rec1_given_x1, P_rec1_given_y1 = P_record_given_coor(
+                    rec1, coor1, towers_info)
+
+                for x2 in range(int(towers_mean_x2 - interval), int(towers_mean_x2 + interval), step):
+                    for y2 in range(int(towers_mean_y2 - interval), int(towers_mean_y2 + interval), step):
+
+                        coor2 = (x2, y2)
+                        rec2 = tower_records[2]
+                        P_c2_given_c1 = P_coor_given_prevCoor(coor2, coor1)
+                        P_rec2_given_x2, P_rec2_given_y2 = P_record_given_coor(
+                            rec2, coor2, towers_info)
+
+                        Px = P_rec0_given_x0 * P_c1_given_c0 * P_rec1_given_x1 * \
+                            P_c2_given_c1 * P_rec2_given_x2 * P_c0
+                        Py = P_rec0_given_y0 * P_c1_given_c0 * P_rec1_given_y1 * \
+                            P_c2_given_c1 * P_rec2_given_y2 * P_c0
+
+                        if Px > max_Px:
+                            best_x0 = x0
+                            best_x1 = x1
+                            best_x2 = x2
+                            max_Px = Px
+
+                        if Py > max_Py:
+                            best_y0 = y0
+                            best_y1 = y1
+                            best_y2 = y2
+                            max_Py = Py
+
+coor0_estimations.append((best_x0, best_y0))
+coor1_estimations.append((best_x1, best_y1))
+coor2_estimations.append((best_x2, best_y2))
+
+
+print(f'real_coor0: {real_coor(0)} - Estimated_coor0: {best_x0, best_y0}')
+print(f'Estimation_error: {dist((best_x0, best_y0), real_coor(0))}')
+print()
+print(f'real_coor1: {real_coor(1)} - Estimated_coor1: {best_x1, best_y1}')
+print(f'Estimation_error: {dist((best_x1, best_y1), real_coor(1))}')
+print()
+print(f'real_coor2: {real_coor(2)} - Estimated_coor2: {best_x2, best_y2}')
+print(f'Estimation_error: {dist((best_x2, best_y2), real_coor(2))}')
+
+
+
+max_Px, max_Py = 0, 0
+interval, step = 20, 5
+
+best_x0, best_y0 = None, None
+best_x1, best_y1 = None, None
+best_x2, best_y2 = None, None
+best_x3, best_y3 = None, None
+
+towers_mean_x3, towers_mean_y3 = get_mean_towers_coor(3, tower_records)
+
+for x0 in range(int(coor0_estimations[-1][0] - interval), int(coor0_estimations[-1][0] + interval), step):
+    for y0 in range(int(coor0_estimations[-1][1] - interval), int(coor0_estimations[-1][1] + interval), step):
+
+        coor0 = (x0, y0)
+        rec0 = tower_records[0]
+        P_c0 = P_coor0(coor0)
+        P_rec0_given_x0, P_rec0_given_y0 = P_record_given_coor(
+            rec0, coor0, towers_info)
+
+        for x1 in range(int(coor1_estimations[-1][0] - interval), int(coor1_estimations[-1][0] + interval), step):
+            for y1 in range(int(coor1_estimations[-1][1] - interval), int(coor1_estimations[-1][1] + interval), step):
+
+                coor1 = (x1, y1)
+                rec1 = tower_records[1]
+                P_c1_given_c0 = P_coor_given_prevCoor(coor1, coor0)
+                P_rec1_given_x1, P_rec1_given_y1 = P_record_given_coor(
+                    rec1, coor1, towers_info)
+                    
+                for x2 in range(int(coor2_estimations[-1][0] - interval), int(coor2_estimations[-1][0] + interval), step):
+                    for y2 in range(int(coor2_estimations[-1][1] - interval), int(coor2_estimations[-1][1] + interval), step):
+                        
+                        coor2 = (x2, y2)
+                        rec2 = tower_records[2]
+                        P_c2_given_c1 = P_coor_given_prevCoor(coor2, coor1)
+                        P_rec2_given_x2, P_rec2_given_y2 = P_record_given_coor(
+                            rec2, coor2, towers_info)
+
+                        for x3 in range(int(towers_mean_x3 - interval), int(towers_mean_x3 + interval), step):
+                            for y3 in range(int(towers_mean_y3 - interval), int(towers_mean_y3 + interval), step):
+
+                                coor3 = (x3, y3)
+                                rec3 = tower_records[3]
+                                P_c3_given_c2 = P_coor_given_prevCoor(
+                                    coor3, coor2)
+                                P_rec3_given_x3, P_rec3_given_y3 = P_record_given_coor(
+                                    rec3, coor3, towers_info)
+
+                                Px = P_rec0_given_x0 * P_c1_given_c0 * P_rec1_given_x1 * \
+                                    P_c2_given_c1 * P_rec2_given_x2 * P_c3_given_c2 * P_rec3_given_x3 * P_c0
+                                Py = P_rec0_given_y0 * P_c1_given_c0 * P_rec1_given_y1 * \
+                                    P_c2_given_c1 * P_rec2_given_y2 * P_c3_given_c2 * P_rec3_given_y3 * P_c0
+
+                                if Px > max_Px:
+                                    best_x0 = x0
+                                    best_x1 = x1
+                                    best_x2 = x2
+                                    best_x3 = x3
+                                    max_Px = Px
+
+                                if Py > max_Py:
+                                    best_y0 = y0
+                                    best_y1 = y1
+                                    best_y2 = y2
+                                    best_y3 = y3
+                                    max_Py = Py
+
+
+coor0_estimations.append((best_x0, best_y0))
+coor1_estimations.append((best_x1, best_y1))
+coor2_estimations.append((best_x2, best_y2))
+coor3_estimations.append((best_x3, best_y3))
+
+
+print(f'real_coor0: {real_coor(0)} - Estimated_coor0: {best_x0, best_y0}')
+print(f'Estimation_error: {dist((best_x0, best_y0), real_coor(0))}')
 
 
 
 
-
-
-
-
-
-
-
-
-
+plt.figure(figsize=(20, 10))
+plt.plot(list(real_coordinates['X']), label='real X')
+plt.plot(list(real_coordinates['Y']), label='real Y')
+plt.plot([coor0_estimations[0][0]], marker='o' , label='estimated X 1 record')
+plt.plot([coor0_estimations[0][1]], marker='o' , label='estimated Y 1 record')
+plt.plot([coor0_estimations[1][0], coor1_estimations[0][0]], label='estimated X 2 records')
+plt.plot([coor0_estimations[1][1], coor1_estimations[0][1]], label='estimated Y 2 records')
+plt.plot([coor0_estimations[2][0], coor1_estimations[1][0], coor2_estimations[0][0]], label='estimated X 3 records')
+plt.plot([coor0_estimations[2][1], coor1_estimations[1][1], coor2_estimations[0][1]], label='estimated Y 3 records')
+plt.plot([coor0_estimations[3][0], coor1_estimations[2][0], coor2_estimations[1][0], coor3_estimations[0][0]], label='estimated X 4 records')
+plt.plot([coor0_estimations[3][1], coor1_estimations[2][1], coor2_estimations[1][1], coor3_estimations[0][1]], label='estimated Y 4 records')
+plt.legend()
+pass
 
 
 

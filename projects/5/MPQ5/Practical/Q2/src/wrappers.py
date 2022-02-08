@@ -11,7 +11,7 @@ class PreprocessAtariObs(ObservationWrapper):
         """A gym wrapper that crops, scales image into the desired shapes and grayscales it."""
         ObservationWrapper.__init__(self, env)
 
-        self.img_size = (64, 64)  # TODO: <YOUR CODE>
+        self.img_size = (50, 50, 1 if gray_scale else env.observation_space.shape[2])
         self.observation_space = Box(0.0, 1.0, (
             self.img_size[0], self.img_size[1], 1 if gray_scale else env.observation_space.shape[2]))
         self.gray_scale = gray_scale
@@ -30,9 +30,13 @@ class PreprocessAtariObs(ObservationWrapper):
         #  * cast image to grayscale (in case of breakout)
         #  * convert image pixels to (0,1) range, float32 type
 
-        # TODO: complete observation descaling
-        processed_img = img
-        return processed_img
+        proccesed_img = img[50:-50, 50:-50, 50:-50]
+        proccesed_img = cv2.resize(proccesed_img, self.img_size)
+        if self.gray_scale:
+            proccesed_img = self._to_gray_scale(proccesed_img)
+        proccesed_img = proccesed_img.astype(np.float32)
+        proccesed_img = proccesed_img / 255.0
+        return proccesed_img
 
 
 class ClipRewardEnv(RewardWrapper):
@@ -40,7 +44,6 @@ class ClipRewardEnv(RewardWrapper):
         RewardWrapper.__init__(self, env)
 
     def reward(self, reward):
-        # TODO: you may complete this section as you please
         """Bin reward to {+1, 0, -1} by its sign."""
         return np.sign(reward)
 

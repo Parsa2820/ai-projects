@@ -14,3 +14,4 @@ Sharif University of Technology - Artificial Intelligence Course - Fall 2021
 - [Learn MNIST dataset with naive bayesian network](./projects/4/Practical/Q1.ipynb)
 - [Learn MNIST dataset with nueral network using pytorch](./projects/4/Practical/Q2.ipynb)
 - [Implement an autoencoder with pytorch to produce subsequent digit](./projects/4/Practical/Q3.ipynb)
+- [Use reinforcement learning for mountain car problem](./projects/5/Practical/Q1/Q_learning.ipynb)
